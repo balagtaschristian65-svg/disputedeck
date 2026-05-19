@@ -34,6 +34,10 @@ export default async (request) => {
   }
 };
 
+export const config = {
+  path: ["/.netlify/functions/verify-license", "/api/verify-license"]
+};
+
 function json(payload, status = 200) {
   return Response.json(payload, { status });
 }
