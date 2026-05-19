@@ -1,0 +1,16 @@
+{
+  "merchantName": "Northline Supply Co.",
+  "processor": "Shopify Payments",
+  "reasonCode": "not_received",
+  "deadline": "2026-05-27",
+  "amount": "249.00",
+  "orderId": "#1042",
+  "customerName": "Jordan Lee",
+  "customerEmail": "jordan@example.com",
+  "purchaseDate": "2026-04-02",
+  "fulfillmentDate": "2026-04-03",
+  "trackingUrl": "https://carrier.example/tracking/1Z999",
+  "productDescription": "One insulated field jacket, size medium, shipped to the address entered at checkout.",
+  "timelineNotes": "Apr 2: Customer completed checkout. Apr 3: Order shipped. Apr 8: Carrier marked package delivered. Apr 12: Customer opened dispute without contacting support first.",
+  "policyNotes": "Checkout shows shipping address entered by customer. Delivery policy asks customers to contact support within 5 days of a missing delivery scan."
+}
