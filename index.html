@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build a structured chargeback evidence packet before submitting through Shopify, Stripe, PayPal, or your processor." />
+  <title>DisputeDeck | Chargeback Evidence Packet Builder</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">D</span><span>DisputeDeck</span></a>
+    <nav><a href="#how">How it works</a><a href="#builder">Builder</a><a href="#pricing">Pricing</a><a href="#prepare">What you need</a></nav>
+    <button class="button ghost small" data-action="open-checkout" data-plan="self">Unlock Pro</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">For ecommerce merchants fighting chargebacks today</p>
+        <h1>Build a bank-ready chargeback evidence packet before the dispute clock eats your day.</h1>
+        <p class="hero-subtitle">Turn order details, tracking proof, policies, and customer messages into a structured response packet you can review and submit through Shopify, Stripe, PayPal, or your payment processor.</p>
+        <div class="hero-actions"><a class="button primary" href="#builder">Build a packet</a><a class="button secondary" href="#prepare">See what you need</a></div>
+        <div class="proof-row"><span>Private by default</span><span>PDF-ready packet</span><span>Reason-specific checklist</span><span>Built for urgent deadlines</span></div>
+      </div>
+      <div class="packet-card"><div class="packet-head"><span>Evidence strength</span><strong id="heroScore">82</strong></div><div class="meter"><span></span></div><dl><div><dt>Reason</dt><dd>Product not received</dd></div><div><dt>Packet</dt><dd>Cover letter, timeline, evidence index</dd></div><div><dt>Missing</dt><dd>Carrier scan screenshot</dd></div></dl></div>
+    </section>
+
+    <section class="explain" id="how">
+      <p class="eyebrow">How it helps</p><h2>Stop submitting scattered screenshots. Build one organized packet.</h2>
+      <p>A chargeback response is easier to review when the facts, timeline, and proof are in one place. DisputeDeck helps you prepare that structure before you submit your response.</p>
+      <div class="explain-grid"><div><b>1 Add the dispute details</b><p>Enter reason, deadline, order ID, amount, customer details, and what was purchased.</p></div><div><b>2 Check your evidence</b><p>See which proof matters for the dispute type.</p></div><div><b>3 Export and submit</b><p>Generate a packet draft, verify every detail, then submit before the deadline.</p></div></div>
+      <div class="warning-strip">DisputeDeck helps organize your response. It does not provide legal advice or guarantee the bank's decision.</div>
+    </section>
+
+    <section class="workspace" id="builder">
+      <aside class="sidebar"><div class="license-card"><span class="status-dot" id="licenseDot"></span><div><strong id="licenseLabel">Demo mode</strong><p id="licenseText">Exports are watermarked until Pro is unlocked.</p></div></div><ol class="steps"><li class="active">Dispute</li><li>Order</li><li>Evidence</li><li>Packet</li></ol></aside>
+      <section class="builder-shell">
+        <div class="builder-header"><div><p class="eyebrow">Guided packet builder</p><h2>Dispute packet</h2></div><div class="score-badge"><span>Strength</span><strong id="scoreValue">0</strong></div></div>
+        <form id="caseForm">
+          <div class="form-grid">
+            <label>Merchant or store name<input name="merchantName" id="merchantName" required placeholder="Northline Supply Co." /></label>
+            <label>Processor<select name="processor"><option>Stripe</option><option>Shopify Payments</option><option>PayPal</option><option>Other processor</option></select></label>
+            <label>Dispute reason<select name="reasonCode" id="reasonCode"><option value="not_received">Product not received</option><option value="fraud">Fraudulent / unauthorized</option><option value="not_as_described">Product unacceptable / not as described</option><option value="credit_not_processed">Credit not processed</option><option value="subscription">Subscription / recurring billing</option></select></label>
+            <label>Response deadline<input name="deadline" type="date" /></label>
+            <label>Disputed amount, USD<input name="amount" type="number" min="0" step="0.01" placeholder="249.00" /></label>
+            <label>Order ID<input name="orderId" id="orderId" placeholder="#1042" required /></label>
+            <label>Customer name<input name="customerName" placeholder="Jordan Lee" /></label>
+            <label>Customer email<input name="customerEmail" type="email" placeholder="customer@example.com" /></label>
+            <label>Purchase date<input name="purchaseDate" type="date" /></label>
+            <label>Fulfillment/access date<input name="fulfillmentDate" type="date" /></label>
+            <label>Tracking or access URL<input name="trackingUrl" type="url" placeholder="https://..." /></label>
+          </div>
+          <label>Product or service purchased<textarea name="productDescription" rows="3"></textarea></label>
+          <label>Timeline notes<textarea name="timelineNotes" rows="5"></textarea></label>
+          <label>Policy and communication notes<textarea name="policyNotes" rows="5"></textarea></label>
+          <div><h3>Evidence checklist</h3><div id="evidenceChecklist" class="checklist"></div></div>
+          <div class="packet-actions"><button class="button secondary" type="button" data-action="load-sample">Load sample case</button><button class="button primary" type="button" data-action="generate">Generate packet</button><button class="button secondary" type="button" data-action="copy-markdown">Copy markdown</button><button class="button ghost" type="button" data-action="print">Print / save PDF</button></div>
+          <article id="packetOutput" class="packet-output"><p class="muted">Generate the packet to preview your cover letter, evidence index, timeline, and processor field map.</p></article>
+        </form>
+      </section>
+    </section>
+
+    <section class="pricing" id="pricing"><div><p class="eyebrow">Pricing</p><h2>Choose the level of help you need.</h2><p>Use Pro when you want to build packets yourself. Choose Packet Setup when the deadline is close and you want your evidence organized for review.</p></div><div class="pricing-cards"><div class="price-card"><strong>DisputeDeck Pro</strong><span class="price">$19</span><p>Build unlimited chargeback response packets in your browser.</p><ul><li>Unlimited packet generation</li><li>Reason-code evidence logic</li><li>Print-to-PDF export</li></ul><button class="button primary full" data-action="open-checkout" data-plan="self">Get Pro access</button></div><div class="price-card service"><strong>Packet setup</strong><span class="price">$79</span><p>Send your dispute details and receive an organized packet draft.</p><ul><li>Send dispute details and screenshots</li><li>Receive an organized packet draft</li><li>Review and submit inside your processor</li></ul><button class="button primary full" data-action="open-checkout" data-plan="service">Get packet setup</button></div></div></section>
+    <section class="intake" id="prepare"><div><p class="eyebrow">What you need</p><h2>Gather these details before building your packet.</h2><p>Your packet is only as strong as the evidence behind it. Start with direct proof first, then add policies and customer communication.</p><button class="button primary" data-action="copy-intake">Copy evidence checklist</button></div><pre id="intakeTemplate" class="intake-card"></pre></section>
+  </main>
+
+  <aside class="chat-widget"><button class="chat-launcher" data-action="toggle-chat"><span>?</span><strong>Help</strong></button><div class="chat-panel" id="chatPanel" hidden><div class="chatbot"><div class="chat-header"><div><strong>DisputeDeck Guide</strong><span>Product guidance, not legal advice</span></div><button class="icon-button chat-close" data-action="toggle-chat">x</button></div><div class="chat-log" id="chatLog"></div><div class="quick-replies" id="quickReplies"></div><form class="chat-form" id="chatForm"><input id="chatInput" placeholder="Ask about evidence, privacy, pricing..." /><button class="button primary">Ask</button></form></div></div></aside>
+  <div class="modal" id="checkoutModal" hidden><div class="modal-card"><button class="icon-button" data-action="close-checkout">x</button><p class="eyebrow">Checkout</p><h2 id="checkoutTitle">Unlock DisputeDeck Pro</h2><p id="checkoutDescription">Complete checkout, then enter your Gumroad license key to remove demo watermarks.</p><label id="licenseKeyLabel">Gumroad license key<input id="licenseKeyInput" placeholder="XXXXXXX-XXXXXXX" /></label><div class="modal-actions"><a class="button primary" id="checkoutLink" href="#" target="_blank" rel="noreferrer">Open checkout</a><button class="button secondary" data-action="verify-license">Unlock with license</button></div></div></div>
+  <script src="config.js"></script><script src="app.js" defer></script>
+</body>
+</html>
