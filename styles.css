@@ -567,6 +567,10 @@ textarea:focus {
   margin-top: 16px;
 }
 
+.loading-state[hidden] {
+  display: none !important;
+}
+
 .spinner {
   animation: spin 900ms linear infinite;
   border: 3px solid #cfe3dc;
